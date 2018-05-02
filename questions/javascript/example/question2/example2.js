@@ -1,5 +1,5 @@
 var Class = new Object();
-Class.property= 'Свойством класса.';
+Class.property= 'Свойство класса.';
 
 for (var name in Class) {
     if (Class.hasOwnProperty(name)) {
