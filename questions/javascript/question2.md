@@ -10,7 +10,7 @@ _Ответ:_
 
 ```
 var Class = new Object();
-Class.property = 'Свойством класса.';
+Class.property = 'Свойство класса.';
 console.log(Class.hasOwnProperty('property')); // вернёт true
 console.log(Class.hasOwnProperty('toString')); // вернёт false
 ```
@@ -20,7 +20,7 @@ console.log(Class.hasOwnProperty('toString')); // вернёт false
 
 ```
 var Class = new Object();  
-Class.property= 'Свойством класса.';
+Class.property= 'Свойство класса.';
 
 for (var name in Class) {
     if (Class.hasOwnProperty(name)) {
