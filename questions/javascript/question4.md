@@ -34,7 +34,7 @@ if (!Array.prototype.bubbleSort) {
 
 Вариант 2
 
-Название функции bubbleSort в вопросе подталкивает реализовать сортировку алгоритмом «Сортировка пузырьком»:
+В вопросе, название функции bubbleSort подталкивает реализовать сортировку алгоритмом «Сортировка пузырьком»:
 
 ```
 //Проверяем наличие метода в массиве
@@ -79,3 +79,95 @@ if (!Array.prototype.bubbleSort) {
 Так как алгоритм «Сортировка пузырьком» является слишком медленным, лучше реализовать функцию на основе алгоритма 
 «Быстрая сортировка»:
 
+```
+//Проверяем наличие метода в массиве
+if (!Array.prototype.bubbleSort) {
+    //Создаем прототип функции сортировки bubbleSort
+    Array.prototype.bubbleSort = function (direction) {
+        'use strict';
+        if (this == null) {
+            throw new TypeError('can\'t convert ' + this + ' to array');
+        }
+
+        let sortHelper = {
+            //Параметр направления сортировки
+            direction: typeof direction !== 'undefined' ? direction : true,
+            /**
+             * Задаем метод для сравнения элементов массива на основе параметра направления сортировки
+             * @param a - элемент массива для сравнения
+             * @param b - элемент массива для сравнения
+             * @returns {boolean}
+             */
+            compare: function (a, b) {
+                a = Number.isNaN(b) ? a : '' + a;
+                b = Number.isNaN(a) ? b : '' + b;
+                return this.direction ? a > b : a < b;
+            },
+            /**
+             * Метод для смены элементов массива местами
+             * @param items - массив в котором меняются элементы
+             * @param leftIndex - индекс элемента массива для смены
+             * @param rightIndex - индекс элемента массива для смены
+             */
+            swap: function (items, leftIndex, rightIndex) {
+                let temp = items[leftIndex];
+                items[leftIndex] = items[rightIndex];
+                items[rightIndex] = temp;
+            },
+            /**
+             * Метод разделитель
+             * @param items - массив для сортировки
+             * @param low - левый указатель
+             * @param high - правый указатель
+             * @returns int - левый указатель
+             */            
+            partition: function (items, low, high) {
+                //Находим опорный элемент
+                let pivot = items[Math.floor((high + low) / 2)];
+                let i = low;
+                let j = high;
+
+                //Определяем нужно ли поменять элементы местами
+                while (i <= j) {
+                    while (this.compare(pivot, items[i])) {
+                        i++;
+                    }
+                    while (this.compare(items[j], pivot)) {
+                        j--;
+                    }
+                    if (i <= j) {
+                        this.swap(items, i, j);
+                        i++;
+                        j--;
+                    }
+                }
+                return i;
+            },
+            /**
+             * Метод сортировки массива
+             * @param items - массив для сортировки
+             * @param low - левый указатель
+             * @param high - правый указатель
+             * @returns {array}
+             */
+            quickSort: function (items, low, high) {
+                let index;
+                if (items.length > 1) {
+                    index = this.partition(items, low, high);
+                    if (low < index - 1) {
+                        this.quickSort(items, low, index - 1);
+                    }
+                    if (index < high) {
+                        this.quickSort(items, index, high);
+                    }
+                }
+                return items;
+            }
+        }
+
+        let sortArray = this;
+        //Сортируем массив
+        return sortHelper.quickSort(sortArray, 0, sortArray.length - 1);
+    }
+}
+```
