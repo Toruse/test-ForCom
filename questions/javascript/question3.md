@@ -33,3 +33,5 @@ if (!String.prototype.eachOdd) {
     console.log(symbol)
 });
 ```
+
+[Содержание](../SUMMARY.md)

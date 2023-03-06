@@ -115,3 +115,5 @@ function clone(objectToBeCloned) {
     return objectClone;
 }
 ```
+
+[Содержание](../SUMMARY.md)
