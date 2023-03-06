@@ -9,7 +9,7 @@ _Ответ:_
 
 Вариант 1
 
-```
+```javascript
 var Class = new Object();
 Class.property = 'Свойство класса.';
 console.log(Class.hasOwnProperty('property')); // вернёт true
@@ -19,7 +19,7 @@ console.log(Class.hasOwnProperty('toString')); // вернёт false
 
 Вариант 2
 
-```
+```javascript
 var Class = new Object();  
 Class.property= 'Свойство класса.';
 

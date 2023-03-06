@@ -7,7 +7,7 @@ _Вопрос:_
 
 _Ответ:_
 
-```
+```javascript
 if (!String.prototype.eachOdd) {
     String.prototype.eachOdd = function (callback) {
         'use strict';

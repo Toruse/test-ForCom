@@ -11,7 +11,7 @@ _Ответ:_
 
 Вариант 1
 
-```
+```javascript
 if (typeof a !== "undefined") {
     console.log("Переменная определена");
 } else {
@@ -22,7 +22,7 @@ if (typeof a !== "undefined") {
 
 Вариант 2
 
-```
+```javascript
 function defined(nameVar) {
     return typeof window[nameVar] !== "undefined";
 }
@@ -36,7 +36,7 @@ if (defined("a")) {
 
 Вариант 3
 
-```
+```javascript
 function defined(nameVar) {
     return (nameVar in window) && window[nameVar]!=null;
 }
