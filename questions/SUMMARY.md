@@ -10,5 +10,7 @@
   * [Первый вопрос](jquery/question1.md)
   * [Второй вопрос](jquery/question2.md)
   * [Третий вопрос](jquery/question3.md)
+* PHP MySQL
+  * [Первый вопрос](php_mysql/question1.md)
   
 [Readme.md](../README.md)
